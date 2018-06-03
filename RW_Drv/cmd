@@ -1,3 +1,5 @@
+make
+
 insmod ./IOTset.ko             生成IOTest.ko的linux module
 
 rmmod IOTset                   移除IOTest.ko的linux module
