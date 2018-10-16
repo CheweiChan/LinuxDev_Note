@@ -4,5 +4,6 @@ insmod ./IOTset.ko             生成IOTest.ko的linux module
 ismod                          查看安裝了哪些module
 mknod /dev/IOTset c 60 0       建立字符設備id＝60 的IO_Dir 名稱為IOTset
 echo "123" > /dev/IOTset       將"123"傳入IOTset(字符設備)
+cat /dev/IOTset 
 dmesg | tail                  （顯示kernal log 最後幾行）
 rmmod IOTset                   移除IOTest.ko的linux module
