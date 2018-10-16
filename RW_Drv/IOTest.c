@@ -9,7 +9,7 @@ MODULE_LICENSE("GPL");
 int postion=0; //每次read時Buff中的位置buff[postion]
 uint8_t byte[100];//read buffer
 int buff_len;// read時需從buffer要搬多少長度
-
+int buff_pos=0;
 static int example_open(struct inode *inode, struct file *filp) {
     printk("<1>EXAMPLE: open\n");
     return 0;
@@ -29,6 +29,7 @@ if(buff_len < size)
 len=buff_len;
 if(len==0)//如果buff沒資料了則重置postion以及返回0 
 {
+    buff_pos=0;
     postion=0;
     return 0;
 }
@@ -74,15 +75,16 @@ return len;//kernel 需要讀取的長度 （最後必須返回0讀取才會結�
 
 static ssize_t example_write(struct file *filp, const char *buf, size_t size, loff_t *f_pos) {
     printk("<1>EXAMPLE: write  (size=%zu)\n", size);
-    for (buff_len = 0; buff_len < size; ++buff_len) {
-        if (copy_from_user(&byte[buff_len], buf + buff_len, 1) != 0) {
+    for (buff_len = buff_pos; buff_len < size+buff_pos; ++buff_len) {
+        if (copy_from_user(&byte[buff_len], buf++, 1) != 0) {
             break;
         }
 
         printk("<1>EXAMPLE: write  (byte[%d] = %02x)\n", buff_len,byte[buff_len]);
 
     }
-    return buff_len;
+buff_pos=buff_len;
+    return size;
 }
 
 static struct file_operations example_fops = {
