@@ -27,12 +27,17 @@ printk("<1>EXAMPLE: read  (size=%zu)buff_len=%d\n", size,buff_len);
 if(buff_len < size)
 {
 len=buff_len;
-if(len==0) return 0;
+if(len==0)//如果buff沒資料了則重置postion以及返回0 
+{
+    postion=0;
+    return 0;
+}
 }
 else
 {
 len=size;
 }
+    
 if(copy_to_user(buf,&byte[0+postion],len))//從kernel space複製資料到user space
 {  
         return -EFAULT;  
@@ -41,7 +46,7 @@ for(i=0;i<len;i++)
 {
      printk("<1>EXAMPLE: resd  (byte[%zu] = %02x)\n", i, (unsigned)byte[i]);
 }
-
+#if 0
 if(postion==0)//第一次讀取從buffer位置0開始
 {
 postion+=len;//之後位置為postion+=len
@@ -59,8 +64,10 @@ len=size;
 postion+=size;
 }
 }
+#endif
+postion+=size;
 buff_len=buff_len-len;//剩餘長度=減掉這次讀出去的資料長度
-    return len;//kernel 需要讀取的長度 （最後必須返回0讀取才會結束）
+return len;//kernel 需要讀取的長度 （最後必須返回0讀取才會結束）
 }
 
 
