@@ -5,9 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #define FIFO "./myfifo"
-
-main(int argc,char** argv)
+viod main(int argc,char** argv)
 {
 	char buf_r[100];
 	int  fd;
