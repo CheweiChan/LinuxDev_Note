@@ -13,9 +13,9 @@ void *create(void *arg)
 {
     struct menber *temp;
     temp=(struct menber *)arg;
-    printf("This thread's id is %u  \n", (unsigned int)pthread_self());
-    printf("The process pid is %d  \n",getpid());
-    printf("menber->a = %d  \n",temp->a);
+    printf("This thread's id is %u  \n", (unsigned int)pthread_self());//get self process id
+    printf("The process pid is %d  \n",getpid());//get main process id
+    printf("menber->a = %d  \n",temp->a);//main process local variable
     printf("menber->s = %s  \n",temp->s);
     return (void *)0;
 }
@@ -27,7 +27,7 @@ int main(int argc,char *argv[])
     struct menber *b;
     b=(struct menber *)malloc( sizeof(struct menber) );
     b->a = 4;
-    b->s = "zieckey";
+    b->s = "SampleCode";
 
     error = pthread_create(&tidp, NULL, create, (void *)b);
 
