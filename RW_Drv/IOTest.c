@@ -1,3 +1,8 @@
+/*example 
+echo "1234567" > /dev/IOTest
+cat /dev/IOTest
+*/
+
 #include <linux/init.h>
 #include <linux/module.h>
 #include<linux/kernel.h>
@@ -19,7 +24,7 @@ static int example_close(struct inode *inode, struct file *filp) {
     printk("<1>EXAMPLE: close\n");
     return 0;
 }
-// read function 為一個遞迴function會一直到返回值為0 返回值為kernel read len
+// 如果是用cat read 為一個遞迴function會一直到返回值為0 返回值為kernel read len
 static ssize_t example_read(struct file *filp, char *buf, size_t size, loff_t *f_pos) {
 size_t i;
 size_t len; //當次read搬的資料長度  最大為size
