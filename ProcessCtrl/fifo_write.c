@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define FIFO_SERVER "/tmp/myfifo"
+#define FIFO_SERVER "/myfifo"
 
 main(int argc,char** argv)
 {
