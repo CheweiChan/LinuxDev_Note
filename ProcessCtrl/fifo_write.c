@@ -5,9 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #define FIFO_SERVER "/myfifo"
-
-main(int argc,char** argv)
+void main(int argc,char** argv)
 {
 	int fd;
 	char w_buf[100];
