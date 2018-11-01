@@ -36,13 +36,13 @@ static int __init my_device_init(void)
 {
 	int ret = 0;
         
-        /* ³õÊ¼»¯Éè±¸ */
-	strncpy(my_dev.bus_id, "my_dev", BUS_ID_SIZE);
-        
-        /*×¢²áÉè±¸*/
+        /* åˆå§‹åŒ–è®¾å¤‡ */
+	//strncpy(my_dev.bus_id, "my_dev", BUS_ID_SIZE);
+        dev_set_name(&my_dev, "my_dev");
+        /*æ³¨å†Œè®¾å¤‡*/
 	device_register(&my_dev);
 		
-	/*´´½¨ÊôĞÔÎÄ¼ş*/
+	/*åˆ›å»ºå±æ€§æ–‡ä»¶*/
 	device_create_file(&my_dev, &dev_attr_dev);
 	
 	return ret;	
