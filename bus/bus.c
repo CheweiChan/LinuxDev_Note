@@ -20,7 +20,8 @@ static void my_bus_release(struct device *dev)
 }
 	
 struct device my_bus = {
-	.bus_id   = "my_bus0",
+	//.bus_id   = "my_bus0",//old version
+        .init_name  = "my_bus0",
 	.release  = my_bus_release
 };
 
@@ -49,16 +50,16 @@ static int __init my_bus_init(void)
 {
 	int ret;
         
-        /*×¢²á×ÜÏß*/
+        /*æ³¨å†Œæ€»çº¿*/
 	ret = bus_register(&my_bus_type);
 	if (ret)
 		return ret;
 		
-	/*´´½¨ÊôÐÔÎÄ¼þ*/	
+	/*åˆ›å»ºå±žæ€§æ–‡ä»¶*/	
 	if (bus_create_file(&my_bus_type, &bus_attr_version))
 		printk(KERN_NOTICE "Fail to create version attribute!\n");
 	
-	/*×¢²á×ÜÏßÉè±¸*/
+	/*æ³¨å†Œæ€»çº¿è®¾å¤‡*/
 	ret = device_register(&my_bus);
 	if (ret)
 		printk(KERN_NOTICE "Fail to register device:my_bus!\n");
