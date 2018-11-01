@@ -11,8 +11,7 @@ static char *Version = "$Revision: 1.9 $";
 
 static int my_match(struct device *dev, struct device_driver *driver)
 {
-	return !strncmp(dev->bus_id, driver->name, strlen(driver->name));
-}
+       return !strncmp(dev_name(dev), driver->name, strlen(driver->name));
 
 static void my_bus_release(struct device *dev)
 {
