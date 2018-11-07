@@ -6,6 +6,7 @@
 #include <linux/sysfs.h>
 #include <linux/stat.h>
  
+/*create a directory in sys/kobject_test */
 MODULE_AUTHOR("chewei");
 MODULE_LICENSE("Dual BSD/GPL");
  
@@ -14,7 +15,7 @@ ssize_t kobj_test_show(struct kobject *kobject, struct attribute *attr,char *buf
 ssize_t kobj_test_store(struct kobject *kobject,struct attribute *attr,const char *buf, size_t count);
  
 struct attribute test_attr = {
-        .name = "kobj_config",
+        .name = "kobj_config",//file name
         .mode = S_IRWXUGO,
 };
  
@@ -46,14 +47,14 @@ ssize_t kobj_test_show(struct kobject *kobject, struct attribute *attr,char *buf
 {
         printk("have show.\n");
         printk("attrname:%s.\n", attr->name);
-        sprintf(buf,"%s\n",attr->name);
+        sprintf(buf,"%s\n",attr->name);//buf data transfer to userspace
         return strlen(attr->name)+2;
 }
  
 ssize_t kobj_test_store(struct kobject *kobject,struct attribute *attr,const char *buf, size_t count)
 {
         printk("havestore\n");
-        printk("write: %s\n",buf);
+        printk("write: %s\n",buf);//buf data from userspace
         return count;
 }
  
@@ -61,7 +62,7 @@ struct kobject kobj;
 static int kobj_test_init(void)
 {
         printk("kboject test init.\n");
-        kobject_init_and_add(&kobj,&ktype,NULL,"kobject_test");
+        kobject_init_and_add(&kobj,&ktype,NULL,"kobject_test");//directory name
         return 0;
 }
  
