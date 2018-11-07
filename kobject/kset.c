@@ -7,7 +7,7 @@
 #include <linux/stat.h>
 #include <linux/kobject.h>
  
-MODULE_AUTHOR("David Xie");
+MODULE_AUTHOR("chewei");
 MODULE_LICENSE("Dual BSD/GPL");
  
 struct kset kset_p;
@@ -47,7 +47,7 @@ struct kset_uevent_ops uevent_ops =
         .uevent = kset_uevent,
 };
  
-int kset_test_init()
+int kset_test_init(void)
 {
         printk("kset test init.\n");
         kobject_set_name(&kset_p.kobj,"kset_p");
@@ -56,11 +56,11 @@ int kset_test_init()
  
         kobject_set_name(&kset_c.kobj,"kset_c");
         kset_c.kobj.kset = &kset_p;
-        kset_register(&kset_c);
+        kset_register(&kset_c);// sys/kset_p/kset_c
         return 0;
 }
  
-int kset_test_exit()
+int kset_test_exit(void)
 {
         printk("kset test exit.\n");
         kset_unregister(&kset_p);
