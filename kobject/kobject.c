@@ -6,7 +6,7 @@
 #include <linux/sysfs.h>
 #include <linux/stat.h>
  
-MODULE_AUTHOR("David Xie");
+MODULE_AUTHOR("chewei");
 MODULE_LICENSE("Dual BSD/GPL");
  
 void obj_test_release(struct kobject *kobject);
@@ -58,14 +58,14 @@ ssize_t kobj_test_store(struct kobject *kobject,struct attribute *attr,const cha
 }
  
 struct kobject kobj;
-static int kobj_test_init()
+static int kobj_test_init(void)
 {
         printk("kboject test init.\n");
         kobject_init_and_add(&kobj,&ktype,NULL,"kobject_test");
         return 0;
 }
  
-static int kobj_test_exit()
+static int kobj_test_exit(void)
 {
         printk("kobject test exit.\n");
         kobject_del(&kobj);
