@@ -30,7 +30,7 @@ static int example_close(struct inode *inode, struct file *filp) {
 static ssize_t example_read(struct file *filp, char *buf, size_t size, loff_t *f_pos) {
 size_t i;
 size_t len=size; //宣告成int會有問題
- printk("Read\n");
+
 while(!havedata)
 {
 
@@ -54,6 +54,8 @@ for(i=0;i<buff_len;i++)
 {
    printk("<1>EXAMPLE: resd  (byte[%zu] = %02x)\n", i,byte[i]);
 }
+len=buff_len;
+buff_len=0
 return len;
 
 }
@@ -63,18 +65,18 @@ return len;
 static ssize_t example_write(struct file *filp, const char *buf, size_t size, loff_t *f_pos) {
 
     printk("<1>EXAMPLE: write  (size=%zu)\n", size);
-    for (buff_len = 0; buff_len < size; ++buff_len) {
+    for (buff_len = 0; buff_len < size; ++buff_len) 
+       {
         if (copy_from_user(&byte[buff_len], buf++, 1) != 0) {
             break;
         }
 
         printk("<1>EXAMPLE: write  (byte[%d] = %02x)\n", buff_len,byte[buff_len]);
 
-    }
-
-havedata=1;
-wake_up(&queue_rw);
-    return size;
+         }
+    havedata=1;
+    wake_up(&queue_rw);
+    return buff_len;
 }
 
 static struct file_operations example_fops = {
