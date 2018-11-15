@@ -1,0 +1,4 @@
+insmod notifier.ko
+會產生一個核心鏈結,鍊結中連結3個function
+每次呼叫raw_notifier_call_chain(&myNotifier,count,NULL);會將count傳給這三個函數並且依序觸發這三個function
+使用timer每秒call 一次 notifier chain
