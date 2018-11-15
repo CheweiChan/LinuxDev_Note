@@ -1,0 +1,21 @@
+分別安裝bus device drive module
+insmod bus.ko 會在/sys/bus 下產生一個my_bus資料夾 以及在/sys/device 下產生一個my_bus0資料夾（可有可無)
+insmod device.ko 會在/sys/bus/my_bus/device 下產生一個my_dev資料夾
+insmod drive.ko 會在/sys/bus/my_bus/drive 下產生一個my_dev資料夾
+
+當device 透過bus match到driver時會創建一個misc_module 在/dev 中產生misc_321 節點
+
+device driver bus都必須使用my_bus_type,當安裝完會自動透過bus配對
+
+struct device my_dev = {
+	.bus = &my_bus_type,
+	.parent = &my_bus,
+	.release = my_dev_release,
+};
+
+struct device_driver my_driver = {
+	.name = "my_dev",
+	.bus = &my_bus_type,
+	.probe = my_probe,
+     .remove = my_remove,
+};
