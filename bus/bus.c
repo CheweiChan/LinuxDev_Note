@@ -50,7 +50,7 @@ static int __init my_bus_init(void)
 	int ret;
         
         /*注册总线*/
-	ret = bus_register(&my_bus_type);
+	ret = bus_register(&my_bus_type); //create at sys/bus
 	if (ret)
 		return ret;
 		
@@ -59,7 +59,7 @@ static int __init my_bus_init(void)
 		printk(KERN_NOTICE "Fail to create version attribute!\n");
 	
 	/*注册总线设备*/
-	ret = device_register(&my_bus);
+	ret = device_register(&my_bus);//create at sys/device
 	if (ret)
 		printk(KERN_NOTICE "Fail to register device:my_bus!\n");
 		
