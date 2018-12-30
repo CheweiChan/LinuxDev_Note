@@ -8,6 +8,7 @@ all:
 	gcc fifo_read_select.c -o fifo_read_select
 	gcc pipe_rw.c -o pipe_rw
 	gcc mysignal.c -o mysignal
+	gcc Mesge_queues_RW.c -o Mesge_queues_RW
 ::/*Execute fifo read before fifo write*/
 fifo:
 	@echo "create a fifo process"
