@@ -3,7 +3,7 @@
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 int main()
 {
 	int pipe_fd[2]; //[1]read  [2]write
