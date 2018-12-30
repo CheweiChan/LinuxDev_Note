@@ -1,12 +1,12 @@
 /*Execute fifo read(create fifo) before fifo write*/
-gcc fifo_read.c -o fifo_read
-gcc fifo_write.c -o fifo_write
+ gcc fifo_read.c -o fifo_read
+ gcc fifo_write.c -o fifo_write
 
 /*creat a new process and pass the local variable to process*/
-gcc pthread.c -lpthread -o pthread
+ gcc pthread.c -lpthread -o pthread
 
 /*Execute fifo read select will block fifo read until data ready or select timeout*/
-gcc fifo_read_select.c -o fifo_read_select
-
+ gcc fifo_read_select.c -o fifo_read_select
 
 /*Execute pipe_rw will create Child process(fork()),read pipe and write pipe*/
+	gcc pipe_rw.c -o pipe_wr
