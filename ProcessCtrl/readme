@@ -11,5 +11,8 @@
 /*Execute pipe_rw will create Child process(fork()),read pipe and write pipe*/
  gcc pipe_rw.c -o pipe_wr
 
-/*Execute mysignal will create signal header function to handle singnal*/
+/*Execute mysignal will create signal header function to handle singnal event*/
  gcc mysignal.c -o mysignal
+
+/*Execute Mesge_queues_RW will create a Mesge queues and child/parent process to write/read queues*/
+ gcc Mesge_queues_RW.c -o Mesge_queues_RW
