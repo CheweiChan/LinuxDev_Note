@@ -9,4 +9,4 @@
  gcc fifo_read_select.c -o fifo_read_select
 
 /*Execute pipe_rw will create Child process(fork()),read pipe and write pipe*/
-	gcc pipe_rw.c -o pipe_wr
+ gcc pipe_rw.c -o pipe_wr
