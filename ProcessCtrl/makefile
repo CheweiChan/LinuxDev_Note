@@ -1,8 +1,11 @@
 CFLAGS:=-lpthread -o
 
 all:
-	@echo "press (make pipe) or (pthread), create execute file"
-
+	@echo "create all process"
+	gcc fifo_read.c -o fifo_read
+	gcc fifo_write.c -o fifo_write
+	gcc pthread.c $(CFLAGS) pthread
+	gcc fifo_read_select.c -o fifo_read_select
 ::/*Execute fifo read before fifo write*/
 fifo:
 	@echo "create a fifo process"
