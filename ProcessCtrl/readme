@@ -10,3 +10,6 @@
 
 /*Execute pipe_rw will create Child process(fork()),read pipe and write pipe*/
  gcc pipe_rw.c -o pipe_wr
+
+/*Execute mysignal will create signal header function to handle singnal*/
+ gcc mysignal.c -o mysignal
