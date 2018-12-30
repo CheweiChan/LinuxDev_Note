@@ -6,6 +6,7 @@ all:
 	gcc fifo_write.c -o fifo_write
 	gcc pthread.c $(CFLAGS) pthread
 	gcc fifo_read_select.c -o fifo_read_select
+	gcc pipe_rw.c -o pipe_rw
 ::/*Execute fifo read before fifo write*/
 fifo:
 	@echo "create a fifo process"
