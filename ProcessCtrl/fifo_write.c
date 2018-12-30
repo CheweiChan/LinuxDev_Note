@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#define FIFO_SERVER "/myfifo"
+#define FIFO_SERVER "./myfifo"
 void main(int argc,char** argv)
 {
 	int fd;
