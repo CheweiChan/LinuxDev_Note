@@ -1,6 +1,6 @@
 CONFIG_MODULE_SIG=n
 
-obj-m := IOTest.o
+obj-m := RWTest.o
 
 ifeq ($(KERNELDIR),)
 KERNELDIR=/lib/modules/$(shell uname -r)/build
