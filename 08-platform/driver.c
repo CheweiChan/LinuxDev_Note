@@ -31,7 +31,6 @@ static struct platform_driver my_driver = {
 
 static int __init my_driver_init(void)
 {       
-        /*×¢²áÆ½Ì¨Çı¶¯*/
 	return platform_driver_register(&my_driver);
 }
 
