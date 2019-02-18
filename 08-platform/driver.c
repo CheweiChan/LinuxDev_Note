@@ -5,7 +5,6 @@
 #include <linux/string.h>
 #include <linux/platform_device.h>
 
-MODULE_AUTHOR("David Xie");
 MODULE_LICENSE("Dual BSD/GPL");
 
 static int my_probe(struct device *dev)
@@ -25,7 +24,7 @@ static struct platform_driver my_driver = {
 	.remove		= my_remove,
 	.driver		= {
 		.owner	= THIS_MODULE,
-		.name	= "my_dev",
+		.name	= "my_dev",  //需與device 一樣
 	},
 };
 
