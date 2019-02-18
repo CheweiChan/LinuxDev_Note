@@ -14,7 +14,7 @@ static int __init my_device_init(void)
 	int ret = 0;
         
         /* 分配结构 */
-	my_device = platform_device_alloc("my_dev", -1);  "my_dev" 需要與 driver 一樣
+	my_device = platform_device_alloc("my_dev", -1);  //"my_dev" 需要與 driver 一樣
         
         /*注册设备*/
 	ret = platform_device_add(my_device);
