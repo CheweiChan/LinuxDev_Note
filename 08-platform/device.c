@@ -5,7 +5,6 @@
 #include <linux/string.h>
 #include <linux/platform_device.h>
 
-MODULE_AUTHOR("David Xie");
 MODULE_LICENSE("Dual BSD/GPL");
 
 static struct platform_device *my_device;
@@ -14,13 +13,13 @@ static int __init my_device_init(void)
 {
 	int ret = 0;
         
-        /* ·ÖÅä½á¹¹ */
-	my_device = platform_device_alloc("my_dev", -1);
+        /* åˆ†é…ç»“æ„ */
+	my_device = platform_device_alloc("my_dev", -1);  "my_dev" éœ€è¦èˆ‡ driver ä¸€æ¨£
         
-        /*×¢²áÉè±¸*/
+        /*æ³¨å†Œè®¾å¤‡*/
 	ret = platform_device_add(my_device);
 	
-	/*×¢²áÊ§°Ü£¬ÊÍ·ÅÏà¹ØÄÚ´æ*/
+	/*æ³¨å†Œå¤±è´¥ï¼Œé‡Šæ”¾ç›¸å…³å†…å­˜*/
 	if (ret)
 	    platform_device_put(my_device);
 	
