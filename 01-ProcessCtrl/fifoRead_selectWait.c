@@ -16,10 +16,10 @@ void main(int argc,char** argv)
 	int  nread;
 	fd_set set; 
 	struct timeval timeout;
-    FD_ZERO(&set); /*将set清零使集合中不含任何fd*/ 
-     // FD_SET(fd, &set); /*将fd加入set集合*/
-     // FD_CLR(fd, &set); /*将fd从set集合中清�?/ 
-     // FD_ISSET(fd, &set); /*测试fd是否在set集合�?/
+        FD_ZERO(&set); /*å°†setæ¸…é›¶ä½¿é›†åˆä¸­ä¸å«ä»»ä½•fd*/ 
+     // FD_SET(fd, &set); /*å°†fdåŠ å…¥seté›†åˆ*/
+     // FD_CLR(fd, &set); /*å°†fdä»Žseté›†åˆä¸­æ¸…é™?/ 
+     // FD_ISSET(fd, &set); /*æµ‹è¯•fdæ˜¯å¦åœ¨seté›†åˆä¸?/
 	while(1)
 	{
         timeout.tv_sec = 2;
@@ -34,9 +34,9 @@ void main(int argc,char** argv)
     		exit(1);	
     	}
 
-	    printf("Preparing for reading bytes...\n");
-		FD_SET(fd, &set);
-                a=select(fd+1, &set, 0, 0, NULL);
+	printf("Preparing for reading bytes...\n");
+ 	FD_SET(fd, &set);
+  	a=select(fd+1, &set, 0, 0, NULL);
 	
     	if(FD_ISSET(fd, &set))
     	{
