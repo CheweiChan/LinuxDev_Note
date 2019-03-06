@@ -1,5 +1,6 @@
 /*Execute fifo read(create fifo) before fifo write*/
- gcc fifo_read.c -o fifo_read
+ gcc fifoRead_nonblock.c -o fifo_read
+ gcc fifoRead_selectWait.c -o fifo_read
  gcc fifo_write.c -o fifo_write
 
 /*Execute pthread will create a new process and pass the local variable to process*/
