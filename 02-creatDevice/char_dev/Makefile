@@ -1,6 +1,6 @@
 CONFIG_MODULE_SIG=n
 
-obj-m := charDevice_drv.o
+obj-m := char_drv.o
 
 ifeq ($(KERNELDIR),)
 KERNELDIR=/lib/modules/$(shell uname -r)/build
