@@ -1,6 +1,6 @@
 CONFIG_MODULE_SIG=n
 
-obj-m := RWTest.o
+obj-m := fileOperate_drv.o
 
 ifeq ($(KERNELDIR),)
 KERNELDIR=/lib/modules/$(shell uname -r)/build

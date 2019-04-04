@@ -1,9 +1,0 @@
-make
-
-insmod ./IOTest.ko             生成IOTest.ko的linux module
-lsmod                          查看安裝了哪些module
-mknod /dev/IOTest c 60 0       建立字符設備id＝60 的IO_Dir 名稱為IOTset
-echo "123" > /dev/IOTest       將"123"傳入IOTset(字符設備)
-cat /dev/IOTest 
-dmesg | tail                  （顯示kernal log 最後幾行）
-rmmod IOTest                   移除IOTest.ko的linux module

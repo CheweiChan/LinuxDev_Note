@@ -1,0 +1,9 @@
+make
+
+insmod ./IOTest.ko             
+lsmod                          
+mknod /dev/IOTest c 60 0       
+echo "123" > /dev/IOTest       
+cat /dev/IOTest 
+dmesg | tail                  
+rmmod IOTest                  
