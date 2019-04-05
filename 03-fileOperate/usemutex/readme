@@ -1,0 +1,29 @@
+[16363.947486] [mutexTest line:191] module_init
+[16363.279514] [mutexTest line:43] open
+[16363.279518] [mutexTest line:94] writecount = 1
+[16363.279520] [mutexTest line:97] thread 0 start
+[16363.279520] [mutexTest line:102] [thread 0]write = 0
+[16363.287608] [mutexTest line:43] open
+[16363.287942] [mutexTest line:43] open
+[16365.124495] [mutexTest line:102] [thread 0]write = 1
+[16366.998321] [mutexTest line:102] [thread 0]write = 2
+[16368.863899] [mutexTest line:102] [thread 0]write = 3
+[16370.767546] [mutexTest line:102] [thread 0]write = 4
+[16372.605262] [mutexTest line:106] thread 0 end
+[16372.605265] [mutexTest line:125] write size = 5
+[16372.605266] [mutexTest line:127] write ok
+[16372.605272] [mutexTest line:49] close
+[16372.605539] [mutexTest line:94] writecount = 2
+[16372.605541] [mutexTest line:110] thread 1 start
+[16372.605542] [mutexTest line:115] [thread 1]write = 0
+[16373.700632] [mutexTest line:115] [thread 1]write = 1
+[16374.785202] [mutexTest line:115] [thread 1]write = 2
+[16375.892477] [mutexTest line:115] [thread 1]write = 3
+[16377.011529] [mutexTest line:115] [thread 1]write = 4
+[16378.136438] [mutexTest line:119] thread 1 end
+[16378.136442] [mutexTest line:125] write size = 5
+[16378.136443] [mutexTest line:127] write ok
+[16378.136445] [mutexTest line:70] read size = 5
+[16378.136446] [mutexTest line:74] read ok
+[16378.136447] [mutexTest line:49] close
+[16378.136475] [mutexTest line:49] close
