@@ -22,7 +22,7 @@ void main(int argc,char** argv)
 	memset(buf_r,0,sizeof(buf_r));
 	
 	/* open fifo */
-	fd=open(FIFO,O_RDONLY|O_NONBLOCK,0);
+	fd=open(FIFO,O_RDONLY,0);
 	if(fd==-1)
 	{
 		perror("open");
