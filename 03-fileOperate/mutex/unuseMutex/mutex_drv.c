@@ -60,7 +60,7 @@ static ssize_t _read(struct file *filp, char __user *buff, size_t cnt, loff_t *l
         if(count > MEM_SIZE - p)
                 count = MEM_SIZE - p;
 
-        mutex_lock(&share_mutex);
+       // mutex_lock(&share_mutex);
         if(copy_to_user(buff, sh->mem + p, count))
                 ret = -EFAULT;
         else
@@ -69,7 +69,7 @@ static ssize_t _read(struct file *filp, char __user *buff, size_t cnt, loff_t *l
                 ret = count;
                 log("read size = %d", count);
         }
-        mutex_unlock(&share_mutex);
+       // mutex_unlock(&share_mutex);
 
         log("read ok");
         return ret;
@@ -90,7 +90,7 @@ static ssize_t _write(struct file *filp, const char __user *buff, size_t cnt, lo
         if(count > MEM_SIZE - p)
                 count = MEM_SIZE - p;
 
-        mutex_lock(&share_mutex);
+        //mutex_lock(&share_mutex);
         log("writecount = %d", writecount);
         if(writecount % 2 == 1)
         {
@@ -118,7 +118,7 @@ static ssize_t _write(struct file *filp, const char __user *buff, size_t cnt, lo
             }
             log("thread 1 end");
         }
-        mutex_unlock(&share_mutex);
+       // mutex_unlock(&share_mutex);
 
         *loff += count;
         ret = count;
