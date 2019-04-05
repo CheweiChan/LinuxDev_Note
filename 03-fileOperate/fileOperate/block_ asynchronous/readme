@@ -1,0 +1,2 @@
+-/*Execute fifo read select will block fifo read until data ready or select timeout*/
+ gcc fifo_read_select.c -o read
