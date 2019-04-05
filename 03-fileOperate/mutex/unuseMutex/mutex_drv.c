@@ -156,7 +156,7 @@ static loff_t _llseek(struct file *filp, loff_t offset, int whence)
         return new_pos;
 }
 
-static struct file_operations fourth_drv_fops =
+static struct file_operations myfops =
 {
         .owner   = THIS_MODULE,
         .open    = _open,
@@ -174,7 +174,7 @@ static int __init mod_init(void)
 {
         alloc_chrdev_region(&mydevno, 0, 1, "mutexTest");
         mydrv = cdev_alloc();
-        cdev_init(mydrv, &fourth_drv_fops); 
+        cdev_init(mydrv, &myfops); 
         cdev_add(mydrv, mydevno, 1);
 
         myclass = class_create(THIS_MODULE, "mutexTest_class");
