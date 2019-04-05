@@ -1,0 +1,8 @@
+Mutex
+The concepts about the mutex is much like lock. When you want to enter a room ,you must acquire the lock then 
+having the permission to enter. In computer science , the mutex is used for protect critical section preventing 
+other thread to mutual access the same code to avoid race condition.
+
+Semaphore
+Not like mutex either are acquired or wait to be acquire. Semaphore can set the initial value to N>1. 
+We can use the value to restrict how many users in this process will be permitted to access the critical section.
