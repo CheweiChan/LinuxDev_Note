@@ -10,6 +10,8 @@
 #include <linux/delay.h>
 #include <linux/sched.h>
 
+#include <linux/semaphore.h>
+
 /* simple log */
 #define log(fmt, arg...)  printk(KERN_INFO "[mutexTest line:%d] "fmt"\n",__LINE__, ##arg);
 
@@ -20,6 +22,7 @@ struct share {
 
 struct share *sh;
 struct mutex share_mutex;
+
 
 
 
@@ -37,13 +40,13 @@ static void _delay(int time)
 }
 static int _open(struct inode *indoe, struct file *filp)
 {
-        log("open ok");
+        log("open");
         return 0;
 }
 
 static int _release(struct inode *indoe, struct file *filp)
 {
-        log("release ok");
+        log("close");
         return 0;
 }
 
@@ -91,29 +94,29 @@ static ssize_t _write(struct file *filp, const char __user *buff, size_t cnt, lo
         log("writecount = %d", writecount);
         if(writecount % 2 == 1)
         {
-            log("write slow start");
+            log("thread 0 start");
             for(i = 0; i < count; i++)
             {
 			    if(copy_from_user(sh->mem +p + i , buff++, 1))
 				    ret = -EFAULT;
-                log("write slow time = %d", i);        
+                log("[thread 0]write = %d", i);        
                 _delay(5);
                 schedule();
             }
-            log("write slow end");
+            log("thread 0 end");
         }
         else
         {
-            log("write fast start");
+            log("thread 1 start");
             for(i = 0; i < count; i++)
             {
 			    if(copy_from_user(sh->mem +p + i , buff++, 1))
 				    ret = -EFAULT;
-                log("write fast time = %d", i);
+                log("[thread 1]write = %d", i);
                 _delay(3);
                 schedule();
             }
-            log("write fast end");
+            log("thread 1 end");
         }
         mutex_unlock(&share_mutex);
 
@@ -185,7 +188,7 @@ static int __init mod_init(void)
 
         mutex_init(&share_mutex);
 
-        log("mod_init");
+        log("module_init");
         return 0;
 }
 
@@ -195,7 +198,7 @@ static void __exit mod_exit(void)
         unregister_chrdev_region(mydevno, 1);
         device_destroy(myclass, mydevno);
         class_destroy(myclass);
-        log("mod_exit");
+        log("module_exit");
 }
 
 module_init(mod_init);

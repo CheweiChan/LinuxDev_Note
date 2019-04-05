@@ -1,0 +1,9 @@
+
+[16985.793252] [mutexTest line:43] open[16985.793257] [mutexTest line:94] writecount = 5[16985.793258] [mutexTest line:97] thread 0 start[16985.793259] [mutexTest line:102] [thread 0]write = 0[16985.797703] [mutexTest line:43] open[16985.797706] [mutexTest line:94] writecount = 6[16985.797707] [mutexTest line:110] thread 1 start[16985.797708] [mutexTest line:115] [thread 1]write = 0[16986.862250] [mutexTest line:115] [thread 1]write = 1[16987.575922] [mutexTest line:43] open[16987.575928] [mutexTest line:70] read size = 5[16987.575928] [mutexTest line:74] read ok[16987.575942] [mutexTest line:49] close[16987.575962] [mutexTest line:102] [thread 0]write = 1[16987.931043] [mutexTest line:115] [thread 1]write = 2[16988.988343] [mutexTest line:115] [thread 1]write = 3[16989.348801] [mutexTest line:102] [thread 0]write = 2[16990.055972] [mutexTest line:115] [thread 1]write = 4[16991.118966] [mutexTest line:119] thread 1 end[16991.118969] [mutexTest line:125] write size = 5[16991.118970] [mutexTest line:127] write ok[16991.118975] [mutexTest line:49] close[16991.119973] [mutexTest line:102] [thread 0]write = 3[16992.942357] [mutexTest line:102] [thread 0]write = 4[16994.808825] [mutexTest line:106] thread 0 end[16994.808827] [mutexTest line:125] write size = 5[16994.808828] [mutexTest line:127] write ok[16994.808834] [mutexTest line:49] close
+
+---------------------------------------------------
+[app] creating thread 0
+[app] creating thread 1
+[app] creating thread 2
+[app] main: exit!
+ 1:A  A  B  B  B  
