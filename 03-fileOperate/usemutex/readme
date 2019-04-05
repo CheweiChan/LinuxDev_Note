@@ -27,3 +27,10 @@
 [16378.136446] [mutexTest line:74] read ok
 [16378.136447] [mutexTest line:49] close
 [16378.136475] [mutexTest line:49] close
+
+---------------------------------------------------
+[app] creating thread 0
+[app] creating thread 1
+[app] creating thread 2
+[app] main: exit!
+ 1:B  B  B  B  B  
