@@ -1,0 +1,26 @@
+[14605.543080] [semaphore line:69] mod_init,sem=1
+[14619.587964] [semaphore line:18] open ok
+[14619.587973] [semaphore line:38] write ok,sem=2
+[14619.587976] [semaphore line:24] release ok
+[14622.697877] [semaphore line:18] open ok
+[14622.697887] [semaphore line:38] write ok,sem=3
+[14622.697890] [semaphore line:24] release ok
+[14632.615269] [semaphore line:18] open ok
+[14632.615278] [semaphore line:31] read ok,sem=2
+[14632.615283] [semaphore line:24] release ok
+[14633.660089] [semaphore line:18] open ok
+[14633.660097] [semaphore line:31] read ok,sem=1
+[14633.660103] [semaphore line:24] release ok
+[14642.013619] [semaphore line:18] open ok
+[14642.013630] [semaphore line:38] write ok,sem=2
+[14642.013634] [semaphore line:24] release ok
+[14642.821484] [semaphore line:18] open ok
+[14642.821493] [semaphore line:38] write ok,sem=3
+[14642.821496] [semaphore line:24] release ok
+[14643.211374] [semaphore line:18] open ok
+[14643.211385] [semaphore line:38] write ok,sem=4
+[14643.211388] [semaphore line:24] release ok
+
+
+echo 123 >> /dev/semaphoreTest
+cat /dev/semaphoreTest
