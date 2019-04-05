@@ -7,7 +7,7 @@
 #include <string.h>
 #include <unistd.h>
 #define FIFO "./myfifo"
-viod main(int argc,char** argv)
+void main(int argc,char** argv)
 {
 	char buf_r[100];
 	int  fd;

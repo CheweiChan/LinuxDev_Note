@@ -5,7 +5,6 @@ all:
 	gcc fifo_read.c -o fifo_read
 	gcc fifo_write.c -o fifo_write
 	gcc pthread.c $(CFLAGS) pthread
-	gcc fifo_read_select.c -o fifo_read_select
 	gcc pipe_rw.c -o pipe_rw
 	gcc mysignal.c -o mysignal
 	gcc Mesge_queues_RW.c -o Mesge_queues_RW
