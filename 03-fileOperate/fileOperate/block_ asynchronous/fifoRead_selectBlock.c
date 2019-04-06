@@ -10,30 +10,28 @@
 
 void main(int argc,char** argv)
 {
-	char buf_r[100];
-	int  fd;
-	int  nread,result;
-	fd_set set,temp; 
+    char buf_r[100];
+    int  fd;
+    int  nread,result;
+    fd_set set,temp; 
     struct timeval timeout;
-	/* create fifo*/
-    unlink(FIFO); //remove FIFO file
-	if((mkfifo(FIFO,O_CREAT|O_EXCL)<0)&&(errno!=EEXIST))
-		printf("cannot create fifoserver\n");
+    /* create fifo*/
+    unlink(FIFO);     //remove FIFO file
+    if((mkfifo(FIFO,O_CREAT|O_EXCL)<0)&&(errno!=EEXIST))//create fifo file
+	printf("cannot create fifoserver\n");
 
+    printf("Preparing for reading bytes...\n");
+    memset(buf_r,0,sizeof(buf_r));
 	
-	printf("Preparing for reading bytes...\n");
-	
-	memset(buf_r,0,sizeof(buf_r));
-	
-	/* open fifo */
+    /* open fifo */
     /*Must setting RW,if setting read only will always return EOF(0),select() will always return have data*/
-	fd=open(FIFO,O_RDWR|O_NONBLOCK,0);
-    FD_ZERO(&set); /*将set清零使集合中不含任何fd*/ 
-    FD_SET(fd, &set); /*将fd加入set集合*/
+    fd=open(FIFO,O_RDWR|O_NONBLOCK,0);
+    FD_ZERO(&set); //clear set
+    FD_SET(fd, &set); //add fd to set
 
 if(fd==-1)
 {
-	perror("open");
+    perror("open");
     exit(1);	
 }
 
@@ -54,12 +52,12 @@ while(1)
     }
     else
     {
-		if((nread=read(fd,buf_r,100))==-1)
-		{
-			if(errno==EAGAIN)
-				printf("no data yet\n");
-		}
-		printf("read %s from FIFO\n",buf_r);
+	if((nread=read(fd,buf_r,100))==-1)
+	{
+	    if(errno==EAGAIN)
+	        printf("no data yet\n");
+	}
+	    printf("read %s from FIFO\n",buf_r);
 	    memset(buf_r,0,sizeof(buf_r));
     }
 }	
