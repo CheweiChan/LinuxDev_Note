@@ -2,33 +2,6 @@
 
 #include <linux/blkdev.h>
 
- 
-
-/*
-
-
-
- *   Run it:
-
- *     make
-
- *     insmod simp_blkdev.ko
-
- *     mkfs.ext3 /dev/simp_blkdev
-
- *     mount /dev/simp_blkdev /mnt/temp1/
-
-
- *     umount /mnt/temp1/
-
- *     rmmod simp_blkdev.ko
-
- *
-
- */
-
- 
-
 #define SIMP_BLKDEV_DEVICEMAJOR	COMPAQ_SMART2_MAJOR
 
 #define SIMP_BLKDEV_DISKNAME	"simp_blkdev"
