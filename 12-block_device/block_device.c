@@ -56,7 +56,7 @@ static void simp_blkdev_do_request(struct request_queue *q)
 
                                         blk_rq_cur_bytes(req));
 
-								printk(KERN_INFO SIMP_BLKDEV_DISKNAME ": Read one sector! ");
+				 printk(KERN_INFO SIMP_BLKDEV_DISKNAME ": Read one sector! ");
 
                         } while (__blk_end_request_cur(req, 0)); 
 
@@ -82,7 +82,7 @@ static void simp_blkdev_do_request(struct request_queue *q)
 
                                         bio_data(req-> bio), blk_rq_cur_bytes(req));
 
-								printk(KERN_INFO SIMP_BLKDEV_DISKNAME ": Write one sector! ");
+					printk(KERN_INFO SIMP_BLKDEV_DISKNAME ": Write one sector! ");
 
                         } while (__blk_end_request_cur(req, 0)); 
 
@@ -124,12 +124,12 @@ static int __init simp_blkdev_init(void)
 
 	simp_blkdev_queue = blk_init_queue(simp_blkdev_do_request, NULL);
 
-	if (!simp_blkdev_queue) {
+	if (!simp_blkdev_queue)
+	{
 
 		ret = -ENOMEM;
 
 		goto err_init_queue;
-
 	}
 
 	 printk(KERN_INFO SIMP_BLKDEV_DISKNAME ": inital the queue! ");
@@ -138,12 +138,11 @@ static int __init simp_blkdev_init(void)
 
 	simp_blkdev_disk = alloc_disk(1);
 
-	if (!simp_blkdev_disk) {
-
+	if (!simp_blkdev_disk) 
+	{
 		ret = -ENOMEM;
 
 		goto err_alloc_disk;
-
 	}
 
 	printk(KERN_INFO SIMP_BLKDEV_DISKNAME ": alloc_disk! ");
